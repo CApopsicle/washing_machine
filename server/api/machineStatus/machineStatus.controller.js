@@ -24,13 +24,19 @@ exports.getStatus = function (req, res) {
         if (rows[0].transitionPeriod == 0){
           item.id = rows[0].plugID;
           item.status = rows[0].status;
-          item.percent = accumlatedPercentage[rows[0].Period][rows[0].status];
-          item.timeLeft = Math.floor(40*(100-data.percent) / 100);
+          item.percent = accumlatedPercentage[rows[0].period][rows[0].status];
+          if (item.percent == 0)
+            item.timeLeft = 0;
+          else
+            item.timeLeft = Math.floor(40*(100-item.percent) / 100);
         }else{
           item.id = rows[1].plugID;
           item.status = rows[1].status;
-          item.percent = accumlatedPercentage[rows[0].Period][rows[0].status];
-          item.timeLeft = Math.floor(40*(100-data.percent) / 100);
+          item.percent = accumlatedPercentage[rows[0].period][rows[0].status];
+          if (item.percent == 0)
+            item.timeLeft = 0;
+          else
+            item.timeLeft = Math.floor(40*(100-item.percent) / 100);
         }
       }
       data.push(item);
@@ -47,7 +53,7 @@ exports.getStatus = function (req, res) {
 };
 
 var accumlatedPercentage = [{
-  'idle': 0
+  'idle': 100
 },{
   'inwater':22,
   'washing':39,
