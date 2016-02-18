@@ -1,0 +1,71 @@
+<div>
+	<div class="container">
+		<div class="page-header">
+			 <p>各樓層洗衣機使用情況</p>
+		</div>
+		<div class="sun"><img src="assets/images/sun.png"></div>
+		<!-- {{ vm.name }} -->
+		<div class="cards">
+			<div class="col-md-3 col-sm-4">
+				<div class="element">
+					<div class="card">
+						<div class="inner_card">
+							<div class="chart" id="graph" data-percent="60"></div>
+							<div class="content">
+								<div class="machine_name">
+									<img src="assets/images/washing_machine_icon.png">
+									<p>女一舍二樓洗衣機A</p>
+								</div>
+								<div class="machine_status">
+									<img src="assets/images/timer_icon.png">
+									<span>剩餘</span>
+									<span class="min_left">15</span>
+									<span>分鐘</span>
+								</div>
+							</div>	
+							<div class="machine" ng-if="isLog()">
+								<span class="notification">洗好通知我</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4">
+				<div class="element">
+					<div class="card">
+						<div class="inner_card">
+							<div class="chart" id="graph" data-percent="60"></div>
+							<div class="content">
+								<div class="machine_name">
+									<img src="assets/images/washing_machine_icon.png">
+									<p>女一舍二樓洗衣機B</p>
+								</div>
+								<div class="machine_status">
+									<img src="assets/images/timer_icon.png">
+									<span>剩餘</span>
+									<span class="min_left">15</span>
+									<span>分鐘</span>
+								</div>
+							</div>	
+							<div class="machine" ng-if="isLog()">
+								<span class="notification">洗好通知我</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4">
+			</div>
+			<div class="col-md-3 col-sm-4">
+				<!-- <div class="element">
+					<div class="card"></div>
+				</div> -->
+			</div>
+		</div>
+		
+	</div>
+	<div class="bottom_img">
+		<img src="assets/images/hill and house.png">
+	</div>
+	
+</div>

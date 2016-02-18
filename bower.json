@@ -1,0 +1,26 @@
+{
+  "name": "washing-epg",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Kelly Su <yoyo420303@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.9",
+    "angular-route": "~1.4.9",
+    "angular-cookies": "~1.4.9"
+  }
+}

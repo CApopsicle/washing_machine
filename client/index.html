@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="washingMachine">
+  <head>
+
+    <base href="/">
+
+    <title>washingMachine</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <!-- build:css app.css -->
+
+    <!-- bower:css -->
+    <!-- endinject -->
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css">
+
+    <!-- endbuild -->
+
+  </head>
+  <body>
+
+    <nav-bar></nav-bar>
+
+    <div ng-view></div>
+
+
+    <!-- build:js app.js -->
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="views/signup/signup.js"></script>
+    <script src="views/signup/signup.controller.js"></script>
+    <script src="views/login/login.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/home/home.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="services/auth/auth.js"></script>
+    <script src="directives/nav-bar/nav-bar.directive.js"></script>
+    <!-- endinject -->
+
+    <!-- endbuild -->
+
+  </body>
+</html>

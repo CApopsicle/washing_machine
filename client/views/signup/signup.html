@@ -1,0 +1,39 @@
+<div class="container"> 
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <form ng-submit="vm.signup()">
+          <div class="form-group">
+            <label for="inputName">使用者名稱</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="請輸入姓名" ng-model="vm.user.name">
+          </div>
+          <div class="form-group">
+            <label for="inputName">使用者帳號</label>
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="請輸入使用者帳號" ng-model="vm.user.userID">
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">信箱</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="abc@abc.com" ng-model="vm.user.email">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">密碼</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="請輸入密碼" ng-model="vm.user.password">
+          </div>
+          <div class="form-group">
+            <label for="inputPhone">電話</label>
+            <div class="input-group">
+              <div class="input-group-addon">+886</div>
+              <input type="tel" class="form-control" id="exampleInputPhone1" placeholder="行動電話" ng-model="vm.user.phone" style="display:inline">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default" ng-click="signup(vm.user)">註冊</button>
+        </form>
+      </div>  
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+
+<pre ng-if="vm.error">{{ vm.error | json }}</pre>
