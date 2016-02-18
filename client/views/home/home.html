@@ -10,7 +10,7 @@
 				<div class="element">
 					<div class="card">
 						<div class="inner_card">
-							<div class="chart" id="graph_1" data-percent="70"></div>
+							<div class="chart" id="graph_1" data-percent="status[0].percent"></div>
 							<div class="content">
 								<div class="machine_name">
 									<img src="assets/images/washing_machine_icon.png">
@@ -19,7 +19,7 @@
 								<div class="machine_status">
 									<img src="assets/images/timer_icon.png">
 									<span>剩餘</span>
-									<span class="min_left">15</span>
+									<span class="min_left">{{status[0].timeLeft}}</span>
 									<span>分鐘</span>
 								</div>
 							</div>	
@@ -35,7 +35,7 @@
 				<div class="element">
 					<div class="card">
 						<div class="inner_card">
-							<div class="chart" id="graph_2" data-percent="60"></div>
+							<div class="chart" id="graph_2" data-percent="status[1].percent"></div>
 							<div class="content">
 								<div class="machine_name">
 									<img src="assets/images/washing_machine_icon.png">
@@ -44,7 +44,7 @@
 								<div class="machine_status">
 									<img src="assets/images/timer_icon.png">
 									<span>剩餘</span>
-									<span class="min_left">15</span>
+									<span class="min_left">{{status[1].timeLeft}}</span>
 									<span>分鐘</span>
 								</div>
 							</div>	

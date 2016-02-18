@@ -29,6 +29,7 @@ exports.getStatus = function (req, res) {
             item.timeLeft = 0;
           else
             item.timeLeft = Math.floor(40*(100-item.percent) / 100);
+
         }else{
           item.id = rows[1].plugID;
           item.status = rows[1].status;
