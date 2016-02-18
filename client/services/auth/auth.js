@@ -7,10 +7,8 @@ angular.module('washingMachine')
     var _ready = $q.defer();
     if ($cookieStore.get('isLoggedIn')){
       var email = $cookieStore.get('isLoggedIn');
-      console.log(email);
       $http.get("api/users/me?email=" + email)
         .then(function(res){
-          console.log(res.data);
           _user.data = true;
           _user.name = res.data.userName;
           _ready.resolve();

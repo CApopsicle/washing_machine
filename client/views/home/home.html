@@ -10,7 +10,7 @@
 				<div class="element">
 					<div class="card">
 						<div class="inner_card">
-							<div class="chart" id="graph" data-percent="60"></div>
+							<div class="chart" id="graph_1" data-percent="70"></div>
 							<div class="content">
 								<div class="machine_name">
 									<img src="assets/images/washing_machine_icon.png">
@@ -24,7 +24,8 @@
 								</div>
 							</div>	
 							<div class="machine" ng-if="isLog()">
-								<span class="notification">洗好通知我</span>
+								<span class="notification" ng-click = "makeSubscription('0201')" ng-if="!status[0].subscribed">洗好通知我</span>
+								<span class="subscribed" ng-if="status[0].subscribed">已訂閱</span>
 							</div>
 						</div>
 					</div>
@@ -34,7 +35,7 @@
 				<div class="element">
 					<div class="card">
 						<div class="inner_card">
-							<div class="chart" id="graph" data-percent="60"></div>
+							<div class="chart" id="graph_2" data-percent="60"></div>
 							<div class="content">
 								<div class="machine_name">
 									<img src="assets/images/washing_machine_icon.png">
@@ -48,7 +49,8 @@
 								</div>
 							</div>	
 							<div class="machine" ng-if="isLog()">
-								<span class="notification">洗好通知我</span>
+								<span class="notification" ng-click = "makeSubscription('0202')" ng-if="!status[1].subscribed">洗好通知我</span>
+								<span class="subscribed" ng-if="status[1].subscribed">已訂閱</span>
 							</div>
 						</div>
 					</div>

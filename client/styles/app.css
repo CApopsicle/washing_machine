@@ -101,7 +101,10 @@ body {
     .card .machine .name {
       padding-right: 10px; }
     .card .machine .notification {
-      color: #B6244F; }
+      color: #B6244F;
+      cursor: pointer; }
+    .card .machine .subscribed {
+      color: #B3ABAD;}
   .card .content{
     font-size: 16px;
     color: #838383;}
@@ -115,6 +118,7 @@ body {
     .card .machine_name p{
       display: inline-block; 
       text-align: right;
+      padding-left: 7px;
     }
     .card .machine_status{
       padding:10px 0 10px 8px; 
@@ -123,9 +127,9 @@ body {
     .card .machine_status img{
       vertical-align: middle; 
     }
-    .card .machine_status p{
-      display: inline-block; 
+    .card .machine_status span{
       text-align: right;
+      padding-left: 7px;
     }
   .card .chart {
     position:relative;
