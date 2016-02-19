@@ -14,7 +14,6 @@ angular.module('washingMachine')
       	};
       	if( Auth.isLogged() ){
       		$scope.userName = Auth.getUser();
-
       	}
       }
     };

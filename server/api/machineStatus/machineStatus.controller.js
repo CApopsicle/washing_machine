@@ -54,7 +54,7 @@ exports.getStatus = function (req, res) {
 };
 
 var accumlatedPercentage = [{
-  'idle': 100
+  'idle': 0
 },{
   'inwater':22,
   'washing':39,
