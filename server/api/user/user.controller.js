@@ -94,7 +94,6 @@ exports.getMe = function (req, res) {
   var value = [req.query.email];
   
   var getTheUser = db.query( query, value, function(err,rows) {
-    console.log(rows);
     if (err) throw err;
     if (rows.length == 0) { return res.json(401); }
     else{
