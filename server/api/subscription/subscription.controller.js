@@ -2,8 +2,7 @@
 
 var _ = require('lodash');
 
-// var authService = require('../../auth/auth.service');
-// var User = require('./user.model');
+
 var db = require('../../config/db');
 
 
@@ -15,7 +14,6 @@ var db = require('../../config/db');
  */
 
 exports.create = function (req, res) {
-  console.log(req.body);
   
   //create this subscription
   var query = "INSERT INTO subscription SET ?";
@@ -36,7 +34,23 @@ exports.create = function (req, res) {
    
     res.send('done');
   });
-  console.log(createSubs.sql);
   
 };
+
+exports.getSubscription = function(req, res){
+  //get subscription data
+  var query = "SELECT * FROM subscription WHERE `machineID` = ?  AND `userEmail` = ?";
+
+  var value = [req.body.machineID, req.body.userEmail]
+
+  var getSubs = db.query( query, value, function(err,rows) {
+    if (err) throw err;
+    else{
+      if (rows[0].length != 0) {res.send(true);}
+      else{res.send(false);}
+    }
+   
+    
+  });
+}
 

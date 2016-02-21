@@ -15,12 +15,9 @@ connection.connect(function(err){
     console.error('error connecting: ' + err.stack);
     return;
   }
-
-  connection.query('SELECT * FROM potluck', function(err, rows, fields) {
-    if (err) throw err;
-   
-    console.log('The potluck is: ', rows);
-  });
+  else{
+    console.log("DB connectted!");
+  }
   
 });
  

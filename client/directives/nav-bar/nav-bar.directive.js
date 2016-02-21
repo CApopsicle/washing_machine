@@ -12,9 +12,14 @@ angular.module('washingMachine')
       	$scope.logout = function(){
       		Auth.logout();
       	};
-      	if( Auth.isLogged() ){
-      		$scope.userName = Auth.getUser();
-      	}
+        function getUser () {
+          if( Auth.isLogged() ){
+            $scope.userName = Auth.getUser();
+            console.log(Auth.getUser());
+          }
+        }
+        getUser();
+      	
       }
     };
   });

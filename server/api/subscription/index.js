@@ -6,6 +6,7 @@ var controller = require('./subscription.controller');
 
 
 router.post('/', controller.create);
+router.post('/getSubs', controller.getSubscription);
 
 
 

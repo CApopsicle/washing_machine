@@ -3,8 +3,6 @@
 var _ = require('lodash');
 var async = require('async');
 
-// var authService = require('../../auth/auth.service');
-// var User = require('./user.model');
 var db = require('../../config/db');
 
 exports.getStatus = function (req, res) {
@@ -20,7 +18,7 @@ exports.getStatus = function (req, res) {
       var item = {}
       if (err) callback(err);
       if (rows.length > 0){
-        console.log(rows);
+        
         if (rows[0].transitionPeriod == 0){
           item.id = rows[0].plugID;
           item.status = rows[0].status;
@@ -44,7 +42,7 @@ exports.getStatus = function (req, res) {
       callback();
     });
 
-    console.log(getTheUser.sql);
+    
   },function(err){
     if (err)
       res.json(401);

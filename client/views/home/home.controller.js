@@ -3,8 +3,8 @@
 angular.module('washingMachine')
   .controller('HomeCtrl', function ($scope, Auth, $cookieStore, $http) {
 
-    var vm = this;
-    getStatus();
+    var vm = this; 
+
     $scope.status = [{
         machineId: '0201',
         subscribed: false,
@@ -32,6 +32,11 @@ angular.module('washingMachine')
     angular.extend(vm, {
       name: 'HomeCtrl'
     });
+
+    //executed when coming into this page
+    getStatus();
+    checkLoginAndSuscription();
+    //executed when coming into this page
 
     //There are 2 cards now
     function setCircle(){
@@ -133,6 +138,25 @@ angular.module('washingMachine')
             }
             setCircle();
         });
+    };
+    // function getCurrentStatus(){
+
+    // };
+    function checkLoginAndSuscription(){
+        if(Auth.isLogged()){
+            $scope.status.forEach(function(item, index){
+                var data = {
+                    machineID: item.machineId,
+                    userEmail: $cookieStore.get('isLoggedIn')
+                };
+                $http.post('api/subscribe/getSubs', data)
+                .then(function(res){
+                    $scope.status[index].subscribed = res.data;
+                });
+
+            });
+            
+        }    
     };
 
   });

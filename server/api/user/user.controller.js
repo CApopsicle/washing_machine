@@ -2,8 +2,6 @@
 
 var _ = require('lodash');
 
-// var authService = require('../../auth/auth.service');
-// var User = require('./user.model');
 var db = require('../../config/db');
 var crypto = require('crypto');
 var salt = 'NrnzYEO3gK4DavneA/w4Ow==';
@@ -28,7 +26,6 @@ function encryptPassword(password) {
  */
 
 exports.create = function (req, res) {
-  console.log(req.body);
   
   // check if user existed
   var checkQuery = "SELECT * FROM user WHERE ?"
@@ -38,14 +35,12 @@ exports.create = function (req, res) {
   var checkDB = db.query(checkQuery, checkValue,function(err,rows){
     if(err) throw err;
     if(rows.length != 0){
-      console.log(rows);
       res.send('email already used!');
     }
     else{
       //create this user
       var query = "INSERT INTO user SET ?";
       var en_password = encryptPassword(req.body.password);
-      console.log(en_password);
 
       var value = {
         id: Date.now(),
@@ -59,27 +54,12 @@ exports.create = function (req, res) {
       db.query( query, value, function(err,response) {
         if (err) throw err;
         else{
-          console.log("user added");
         }
        
         res.send('done');
       });
     }
   });
-  console.log(checkDB.sql);
-
-  // User.create(req.body)
-  //   .then(function() {
-  //     User
-  //     .spread(function(user, created) {
-  //       console.log(user.get({
-  //         plain: true
-  //       }))
-  //       console.log(created)
-  //       res.send("created")
-
-  //   })
-  // })
 };
 exports.login = function(req, res){
 
@@ -100,9 +80,6 @@ exports.login = function(req, res){
       }
     }
   });
-
-  console.log(getTheUser.sql);
-
 };
 
 /**
@@ -124,14 +101,6 @@ exports.getMe = function (req, res) {
       res.send(data);
     }
   });
-
-  console.log(getTheUser.sql);
-
-  // User.findOne({ where: {name: req.body.name} }).then(function(err,user) {
-  //   if (err) { return handleError(res, err); }
-  //   if (!user) { return res.json(401); }
-  //   res.status(200).json(user);
-  // })
 };
 
 exports.deleteUser = function(req, res){
@@ -142,12 +111,8 @@ exports.deleteUser = function(req, res){
   }
   var deleteTheUser = db.query( query, value, function(err,rows) {
     if (err) throw err;
-    else{
-      console.log(rows);
-    }
    
     res.send(rows);
   });
 
-  console.log(deleteTheUser.sql);
 }
