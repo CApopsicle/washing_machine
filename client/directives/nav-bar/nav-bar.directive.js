@@ -15,7 +15,6 @@ angular.module('washingMachine')
         function getUser () {
           if( Auth.isLogged() ){
             $scope.userName = Auth.getUser();
-            console.log(Auth.getUser());
           }
         }
         getUser();
