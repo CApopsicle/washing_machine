@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('washingMachine')
-  .controller('HomeCtrl', function ($scope, Auth, $cookieStore, $http) {
+  .controller('HomeCtrl', function ($scope, Auth, $cookieStore, $http, $interval) {
 
     var vm = this; 
 
@@ -36,6 +36,7 @@ angular.module('washingMachine')
     //executed when coming into this page
     getStatus();
     checkLoginAndSuscription();
+    $interval(checkLoginAndSuscription, 60000);
     //executed when coming into this page
 
     //There are 2 cards now
@@ -107,10 +108,8 @@ angular.module('washingMachine')
                 userEmail: $cookieStore.get('isLoggedIn'),
                 machineID: machineId
             }
-            console.log("subscription data: ",data);
             $http.post('api/subscribe', data)
             .then(function(res){
-                console.log(res);
                 if(res.data=='done'){
                     $scope.status.forEach(function(eachMachine, index){
                         if(eachMachine.machineId == machineId){
@@ -139,9 +138,6 @@ angular.module('washingMachine')
             setCircle();
         });
     };
-    // function getCurrentStatus(){
-
-    // };
     function checkLoginAndSuscription(){
         if(Auth.isLogged()){
             $scope.status.forEach(function(item, index){
@@ -153,9 +149,7 @@ angular.module('washingMachine')
                 .then(function(res){
                     $scope.status[index].subscribed = res.data;
                 });
-
             });
-            
         }    
     };
 

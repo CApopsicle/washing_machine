@@ -46,7 +46,7 @@ exports.getSubscription = function(req, res){
   var getSubs = db.query( query, value, function(err,rows) {
     if (err) throw err;
     else{
-      if (rows[0].length != 0) {res.send(true);}
+      if (rows.length != 0) {res.send(true);}
       else{res.send(false);}
     }
    

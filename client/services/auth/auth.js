@@ -82,7 +82,6 @@ angular.module('washingMachine')
      * @returns {boolean}
      */
     this.isLogged = function () {
-      console.log(_user.hasOwnProperty('data'));
       return _user.hasOwnProperty('data');
     };
 
