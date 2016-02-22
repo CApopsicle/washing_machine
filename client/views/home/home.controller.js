@@ -46,7 +46,7 @@ angular.module('washingMachine')
             var el = document.getElementById(_id); // get canvas
 
             var options = {
-                percent:  el.getAttribute('data-percent') || 25,
+                percent:  $scope.status[i].percent,
                 size: el.getAttribute('data-size') || 110,
                 lineWidth: el.getAttribute('data-line') || 8,
                 rotate: el.getAttribute('data-rotate') || 0
@@ -125,6 +125,7 @@ angular.module('washingMachine')
     function getStatus(){
         $http.get('api/status')
         .then(function(res){
+            console.log(res);
             for (var i = 0; i < res.data.length; i++) {
                 for (var j = 0; j < $scope.status.length; j++) {
                     if(res.data[i].id == $scope.status[j].plugId){
@@ -148,8 +149,10 @@ angular.module('washingMachine')
                 $http.post('api/subscribe/getSubs', data)
                 .then(function(res){
                     $scope.status[index].subscribed = res.data;
+
                 });
             });
+            console.log($scope.status);
         }    
     };
 
