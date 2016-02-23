@@ -48,8 +48,7 @@ exports.create = function (req, res) {
         phone: phone_number,
         name: req.body.name, 
         email: req.body.email,
-        password: en_password,
-        userID: req.body.userID
+        password: en_password
       }
 
       db.query( query, value, function(err,response) {

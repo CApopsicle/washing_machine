@@ -12,24 +12,11 @@ angular.module('washingMachine')
        */
       // user: { email: 'test@test.com', password: 'test' },
 
-      /**
-       * Signup
-       */
-      // signup: function () {
-      //   Auth.signup(vm.user)
-      //     .then(function () {
-      //       $location.path('/');
-      //     })
-      //     .catch(function (err) {
-      //       vm.error = err;
-      //     });
-      // }
     });
 
     $scope.signup = function(user){
 
       if(!user.name){$scope.alert = "您未填入使用者名稱"}
-      else if (!user.userID){$scope.alert = "您未填入使用者帳號"}
       else if (!user.email){$scope.alert = "您未填入email"}
       else if (!user.password){$scope.alert = "您未填入密碼"}
       else if (!user.phone){$scope.alert = "您未填入電話"}
@@ -39,7 +26,10 @@ angular.module('washingMachine')
           url:'api/users',
           data: user
         }).success(function(res){
-          console.log(res);
+          if(res == "done"){
+            $scope.notification_success = true;
+            $location.path('/login');
+          }
         });
       }
     };

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('washingMachine')
-  .controller('HomeCtrl', function ($scope, Auth, $cookieStore, $http, $interval) {
+  .controller('HomeCtrl', function ($scope, Auth, $cookieStore, $http, $interval, $location) {
 
     var vm = this; 
 
@@ -37,10 +37,19 @@ angular.module('washingMachine')
     getStatus();
     checkLoginAndSuscription();
     $interval(checkLoginAndSuscription, 60000);
+    $interval(getStatus, 5000);
     //executed when coming into this page
 
     //There are 2 cards now
     function setCircle(){
+        for (var i = 0; i < 2; i++){
+            var _id = 'graph_'+(i+1);
+            var el = document.getElementById(_id);
+            while(el.firstChild){
+                el.removeChild(el.firstChild);
+            }
+        }
+
         for (var i = 0; i < 2; i++) {
             var _id = 'graph_'+(i+1);
             var el = document.getElementById(_id); // get canvas
@@ -120,7 +129,7 @@ angular.module('washingMachine')
                 }
             });
         }
-        else{}// login first
+        else{$location.path('/login');}// login first
     };
     function getStatus(){
         $http.get('api/status')
@@ -131,8 +140,7 @@ angular.module('washingMachine')
                     if(res.data[i].id == $scope.status[j].plugId){
                         $scope.status[j].status =  translateStatus[res.data[i].status];
                         $scope.status[j].percent = res.data[i].percent;
-                        $scope.status[j].timeLeft = res.data[i].timeLeft;
-                        
+                        $scope.status[j].timeLeft = res.data[i].timeLeft;                       
                     }
                 }
             }
@@ -143,13 +151,12 @@ angular.module('washingMachine')
         if(Auth.isLogged()){
             $scope.status.forEach(function(item, index){
                 var data = {
-                    machineID: item.machineId,
+                    machineID: item.plugId,
                     userEmail: $cookieStore.get('isLoggedIn')
                 };
                 $http.post('api/subscribe/getSubs', data)
                 .then(function(res){
                     $scope.status[index].subscribed = res.data;
-
                 });
             });
             console.log($scope.status);
