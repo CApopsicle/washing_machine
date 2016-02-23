@@ -37,7 +37,7 @@ angular.module('washingMachine')
     getStatus();
     checkLoginAndSuscription();
     $interval(checkLoginAndSuscription, 60000);
-    $interval(getStatus, 5000);
+    $interval(getStatus, 15000);
     //executed when coming into this page
 
     //There are 2 cards now
@@ -134,7 +134,6 @@ angular.module('washingMachine')
     function getStatus(){
         $http.get('api/status')
         .then(function(res){
-            console.log(res);
             for (var i = 0; i < res.data.length; i++) {
                 for (var j = 0; j < $scope.status.length; j++) {
                     if(res.data[i].id == $scope.status[j].plugId){
@@ -159,7 +158,7 @@ angular.module('washingMachine')
                     $scope.status[index].subscribed = res.data;
                 });
             });
-            console.log($scope.status);
+            
         }    
     };
 
