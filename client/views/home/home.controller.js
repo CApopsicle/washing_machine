@@ -112,7 +112,7 @@ angular.module('washingMachine')
             .then(function(res){
                 if(res.data=='done'){
                     $scope.status.forEach(function(eachMachine, index){
-                        if(eachMachine.machineId == machineId){
+                        if(eachMachine.plugId == machineId){
                             eachMachine.subscribed = true;
                         }
                     });
