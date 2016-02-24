@@ -41,14 +41,14 @@ exports.create = function (req, res) {
       //create this user
       var query = "INSERT INTO user SET ?";
       var en_password = encryptPassword(req.body.password);
+      var phone_number = "+886" + req.body.phone.substring(1,10);
 
       var value = {
         id: Date.now(),
-        phone: req.body.phone,
+        phone: phone_number,
         name: req.body.name, 
         email: req.body.email,
-        password: en_password,
-        userID: req.body.userID
+        password: en_password
       }
 
       db.query( query, value, function(err,response) {
