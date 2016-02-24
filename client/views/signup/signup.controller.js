@@ -36,7 +36,6 @@ angular.module('washingMachine')
           }
           else if (res == "email already used!"){
             $scope.notification_duplicate = true;
-            $location.path('/login');
           }
         });
       }
