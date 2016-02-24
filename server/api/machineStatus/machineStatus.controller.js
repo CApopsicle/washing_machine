@@ -31,7 +31,7 @@ exports.getStatus = function (req, res) {
         }else{
           item.id = rows[1].plugID;
           item.status = rows[1].status;
-          item.percent = accumlatedPercentage[rows[0].period][rows[0].status];
+          item.percent = accumlatedPercentage[rows[1].period][rows[1].status];
           if (item.percent == 0)
             item.timeLeft = 0;
           else
