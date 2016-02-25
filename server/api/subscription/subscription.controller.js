@@ -39,9 +39,9 @@ exports.create = function (req, res) {
 
 exports.getSubscription = function(req, res){
   //get subscription data
-  var query = "SELECT * FROM subscription WHERE `machineID` = ?  AND `userEmail` = ?";
+  var query = "SELECT * FROM subscription WHERE `machineID` = ?  AND `userEmail` = ? AND `finish` = ?";
 
-  var value = [req.body.machineID, req.body.userEmail]
+  var value = [req.body.machineID, req.body.userEmail, 0]
 
   var getSubs = db.query( query, value, function(err,rows) {
     if (err) throw err;
